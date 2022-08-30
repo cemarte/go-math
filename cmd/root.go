@@ -14,7 +14,7 @@ import (
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "go-gre",
-	Short: "Arithmetic properties for number, such as prime, factors etc",
+	Short: "Arithmetic properties for numbers, such as prime, factors, etc.",
 	Long:  `For GRE study purposes.`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
