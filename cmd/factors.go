@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"strconv"
 
+	"github.com/cemarte/gre/go-math/lib"
 	"github.com/spf13/cobra"
 )
 
@@ -29,7 +30,7 @@ var factorsCmd = &cobra.Command{
 
 				inputs[i] = intVal
 
-				factors := getPrimeFactors(inputs[i])
+				factors := lib.GetPrimeFactors(inputs[i])
 
 				fmt.Println(factors)
 

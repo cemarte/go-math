@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"strconv"
 
+	"github.com/cemarte/gre/go-math/lib"
 	"github.com/spf13/cobra"
 )
 
@@ -36,7 +37,7 @@ to quickly create a Cobra application.`,
 
 			inputs[i] = intVal
 
-			result := isPrime(inputs[i])
+			result := lib.IsPrime(inputs[i])
 
 			fmt.Printf("%d is Prime? %t\n", intVal, result)
 
