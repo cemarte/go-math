@@ -57,3 +57,19 @@ func GetPrimeFactors(i int) []int {
 	sort.Ints(result)
 	return result
 }
+
+func GetMedian(input []int) float32 {
+
+	length := len(input)
+	if length == 0 {
+		return float32(0)
+	}
+
+	sort.Ints(input)
+
+	if length%2 == 0 {
+		return (float32(input[(length-1)/2]) + float32(input[(length/2)])) / 2.0
+	} else {
+		return float32(input[length/2])
+	}
+}

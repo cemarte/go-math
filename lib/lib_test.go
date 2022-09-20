@@ -1,6 +1,7 @@
 package lib
 
 import (
+	"fmt"
 	"strconv"
 	"testing"
 )
@@ -59,6 +60,27 @@ func TestGetFactors(t *testing.T) {
 			ans := GetPrimeFactors(testCase.input)
 			if !Equal(ans, testCase.output) {
 				t.Errorf("factors for %d, expected %v, got %v", testCase.input, testCase.output, ans)
+			}
+		})
+	}
+}
+
+func TestGetMedian(t *testing.T) {
+	testCases := []struct {
+		input  []int
+		output float32
+	}{
+		{[]int{}, 0.0},
+		{[]int{1, 2, 3, 4, 5, 6}, 3.5},
+		{[]int{0, 0, 3, 6, 6}, 3},
+		{[]int{3, 1, 6, 9, 0}, 3},
+	}
+
+	for _, testCase := range testCases {
+		t.Run(fmt.Sprint(testCase.input), func(t *testing.T) {
+			ans := GetMedian(testCase.input)
+			if ans != testCase.output {
+				t.Errorf("Expected %f, got %f", testCase.output, ans)
 			}
 		})
 	}
