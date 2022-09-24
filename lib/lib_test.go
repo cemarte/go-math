@@ -86,6 +86,35 @@ func TestGetMedian(t *testing.T) {
 	}
 }
 
+type modeResult struct {
+	values  []int
+	hasMode bool
+}
+
+type modeTestCase struct {
+	input  []int
+	output modeResult
+}
+
+func TestGetMode(t *testing.T) {
+
+	testCases := []modeTestCase{
+		{[]int{}, modeResult{[]int{}, false}},
+		{[]int{1, 2, 3, 4, 5, 6}, modeResult{[]int{}, false}},
+		{[]int{0, 0, 3, 6, 6}, modeResult{[]int{0, 6}, true}},
+		{[]int{3, 1, 6, 9, 0, 3}, modeResult{[]int{3}, true}},
+	}
+
+	for _, testCase := range testCases {
+		t.Run(fmt.Sprint(testCase.input), func(t *testing.T) {
+			ans, hasMode := GetMode(testCase.input)
+			if !Equal(ans, testCase.output.values) || hasMode != testCase.output.hasMode {
+				t.Errorf("Expected %v, got %v", testCase.output.values, ans)
+			}
+		})
+	}
+}
+
 // Equal tells whether a and b contain the same elements.
 // A nil argument is equivalent to an empty slice.
 func Equal(a, b []int) bool {

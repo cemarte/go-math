@@ -73,3 +73,29 @@ func GetMedian(input []int) float32 {
 		return float32(input[length/2])
 	}
 }
+
+func GetMode(input []int) ([]int, bool) {
+	hash := make(map[int]int)
+
+	for _, val := range input {
+		hash[val] += 1
+	}
+
+	maxCount := 0
+	results := make([]int, 0)
+
+	for number, occurrences := range hash {
+		if occurrences == maxCount {
+			results = append(results, number)
+		} else if occurrences > maxCount {
+			results = []int{number}
+			maxCount = occurrences
+		}
+	}
+
+	if len(results) == len(input) {
+		return []int{}, false
+	}
+
+	return results, maxCount > 0
+}
